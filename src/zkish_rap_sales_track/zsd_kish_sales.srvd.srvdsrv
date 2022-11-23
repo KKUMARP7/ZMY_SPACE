@@ -1,0 +1,4 @@
+@EndUserText.label: 'Service Definition'
+define service ZSD_KISH_SALES {
+  expose ZI_KISH_CDS_SALES_ITEM;
+}

@@ -1,0 +1,30 @@
+managed
+implementation in class zbp_i_kish_cds_sales_item unique;
+//strict ( 2 ); //Uncomment this line in order to enable strict mode 2. The strict mode has two variants (strict(1), strict(2)) and is prerequisite to be future proof regarding syntax and to be able to release your BO.
+
+define behavior for ZI_KISH_CDS_SALES_ITEM alias ZBD_KISH
+persistent table ZSALES_TABLE
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+
+  field ( numbering : managed, readonly ) Id;
+
+  //action( features : instance ) SetActive result [1] $self;
+  //determination ChangeQty on modify { field Item; }
+  //validation CheckQty on save { field Item; }
+
+  mapping for zsales_table
+  { Description = description;
+    Id = id;
+    Item = item;
+    Material = material;
+    Type = type;
+    last_changed_at = last_changed_at;
+    local_changed_at = local_changed_at;
+    time_zone = time_zone; }
+}
